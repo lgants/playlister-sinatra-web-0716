@@ -6,4 +6,9 @@ class Genre < ActiveRecord::Base
   def slug
     self.name.split(" ").join("-").downcase
   end
+
+  def self.find_by_slug(slug)
+    self.all.detect {|genre| genre.slug == slug}
+  end
+
 end

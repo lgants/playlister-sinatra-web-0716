@@ -8,10 +8,6 @@ class Song < ActiveRecord::Base
   end
 
   def self.find_by_slug(slug)
-    binding.pry
-   @unslug = slug.split("-").map!(&:capitalize).join(" ")
-   @song_instance = Song.find_by(name: @unslug)
-   @song_instance.name
+    self.all.detect {|song| song.slug == slug}
   end
-
 end
